@@ -13,8 +13,6 @@ gem 'puma', '~> 5.0'
 
 gem 'jwt'
 
-gem 'factory_bot_rails'
-
 gem 'faker'
 
 gem 'bcrypt', '~> 3.1.7'
@@ -32,5 +30,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'capybara'
   gem 'rswag-specs'
 end
