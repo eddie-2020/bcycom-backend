@@ -1,9 +1,8 @@
 FactoryBot.define do
-  factory :motocycle do
+  factory :motorcycle do
     model { 'MyString' }
     description { 'MyString' }
     price { 1.5 }
-    title { 'MyString' }
     image { 'MyString' }
     duration { 1 }
     discount { 1 }
