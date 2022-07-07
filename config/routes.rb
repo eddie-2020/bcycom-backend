@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :users, only: %i[index show update destroy]
+      resource :users, only: %i[create]
     end
   end
+  post "/login", to: "users#login"
+  get "/auto_login", to: "users#auto_login"
 end
