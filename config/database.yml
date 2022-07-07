@@ -15,8 +15,11 @@ development:
 
 test:
   <<: *default
-  database: book_motocycle_api_test
-
+  database: book_motocycle_api_development
+  username: book_motocycle_api
+  host: localhost
+  password: root
+  
 production:
   <<: *default
   database: book_motocycle_api_production
