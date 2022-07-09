@@ -14,6 +14,8 @@ class Api::V1::UsersController < ApplicationController
 
   # LOGGING IN
   def login
+    return unless @user.save
+
     @user = User.find_by(username: params[:username])
 
     if @user&.authenticate(params[:password])
@@ -31,6 +33,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:photo, :username, :email, :password)
+    params.permit(:photo, :username, :email)
   end
 end
