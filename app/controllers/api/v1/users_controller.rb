@@ -1,12 +1,15 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: %i[index]
+  before_action :authorized, only: %i[show]
 
   # USER
   def index
     @users = User.all
     render json: @users
   end
-
+  def show
+    @user=User.find(params[:id])
+    render json: @user
+  end
   # REGISTER
   def create
     @user = User.create(user_params)
