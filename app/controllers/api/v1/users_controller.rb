@@ -4,6 +4,7 @@ class Api::V1::UsersController < ApplicationController
   # USER
   def index
     @users = User.all
+    render json: @users
   end
 
   # REGISTER
