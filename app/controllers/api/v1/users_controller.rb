@@ -1,5 +1,10 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: %i[auto_login]
+  before_action :authorized, only: %i[index]
+
+  # USER
+  def index
+    @users = User.all
+  end
 
   # REGISTER
   def create
