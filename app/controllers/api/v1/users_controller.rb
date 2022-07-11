@@ -1,5 +1,15 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorized, only: %i[auto_login]
+  before_action :authorized, only: %i[show auto_login]
+  # USER
+  def index
+    @users = User.all
+    render json: @users
+  end
+
+  def show
+    @user = User.find(params[:id])
+    render json: @user
+  end
 
   # REGISTER
   def create
