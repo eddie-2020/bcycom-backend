@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users, only: %i[create]
       post "/login", to: "users#login"
       get "/auto_login", to: "users#auto_login"
-    end
+      get "/users", to: "users#index"
+     end
   end
 end
