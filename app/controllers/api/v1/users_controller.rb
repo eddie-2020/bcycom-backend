@@ -24,7 +24,6 @@ class Api::V1::UsersController < ApplicationController
   # LOGGING IN
   def login
     @user = User.find_by(email: params[:email])
-
     if @user
       token = encode_token({ user_id: @user.id })
       render json: { user: @user, token: }
@@ -33,12 +32,7 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def auto_login
-    render json: @user
-  end
-
   private
-
   def user_params
     params.permit(:photo, :username, :email)
   end
