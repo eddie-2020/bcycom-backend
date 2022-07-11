@@ -16,11 +16,11 @@ class Api::V1::UsersController < ApplicationController
   def login
     @user = User.find_by(email: params[:email])
 
-    if @user&.authenticate(params[:username])
+    if @user
       token = encode_token({ user_id: @user.id })
       render json: { user: @user, token: }
     else
-      render json: { token: @user }
+      create
     end
   end
 
