@@ -16,4 +16,10 @@ class Api::V2::MotorcyclesController < ApplicationController
     @motorcycle = Motorcycle.find(params[:id])
     render json: @motorcycle
   end
+
+  private
+
+  def motorcycle_params
+    params.permit(:model, :title, :description, :price, :duration, :discount, :image)
+  end
 end

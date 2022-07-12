@@ -1,6 +1,7 @@
 class Motorcycle < ApplicationRecord
   belongs_to :user
 
+  validates :title, presence: true
   validates :model, presence: true
   validates :description, presence: true, length: { in: 1..100 }
   validates :price, presence: true, numericality: { greater_than: 0 }
