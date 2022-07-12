@@ -1,7 +1,7 @@
 class Api::V2::MotorcyclesController < ApplicationController
   before_action :authorized, only: %i[index show]
-  before_action :set_motorcycle
-  
+  before_action :set_motorcycle, only: %i[update]
+
   # MOTORCYCLES
   def index
     @motorcycles = Motorcycle.all
@@ -24,7 +24,16 @@ class Api::V2::MotorcyclesController < ApplicationController
     if @motorcycle.save
       render json: { motorcycle: @motorcycle, message: 'Motorcycle created successfully!' }, status: :created
     else
-      render json: { error: @motorcycle.error.full_messages }, status: :unprocessable_entity
+      render json: { error: @motorcycle.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  # UPDATE MOTORCYCLE
+  def update
+    if @motorcycle.update(motorcycle_params)
+      render json: { motorcycle: @motorcycle, message: 'Motorcycle updated successfully' }, status: :ok
+    else
+      render json: { error: @motorcycle.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
