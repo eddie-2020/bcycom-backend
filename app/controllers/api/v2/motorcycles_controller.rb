@@ -1,6 +1,7 @@
 class Api::V2::MotorcyclesController < ApplicationController
   before_action :authorized, only: %i[index show]
-
+  before_action :set_motorcycle
+  
   # MOTORCYCLES
   def index
     @motorcycles = Motorcycle.all
@@ -28,6 +29,10 @@ class Api::V2::MotorcyclesController < ApplicationController
   end
 
   private
+
+  def set_motorcycle
+    @motorcycle = @user.motorcycles.find(params[:id])
+  end
 
   def motorcycle_params
     params.permit(:model, :title, :description, :price, :duration, :discount, :image)
