@@ -1,5 +1,5 @@
 class Api::V2::MotorcyclesController < ApplicationController
-  before_action :authorized, only: %i[index show]
+  before_action :authorized, only: %i[create update destroy]
   before_action :set_motorcycle, only: %i[update]
 
   # MOTORCYCLES

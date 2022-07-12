@@ -9,7 +9,11 @@ Rails.application.routes.draw do
      end
 
      namespace :v2 do
-      resources :motorcycles, only: %i[index show create update delete]
+      resources :motorcycles, only: %i[index]
+      get "/motorcycle", to: "motorcycles#show"
+      post "/motorcycle", to: "motorcycles#create"
+      post "/motorcycle", to: "motorcycles#update"
+      post "/motorcycle", to: "motorcycles#destroy"
      end
   end
 end
