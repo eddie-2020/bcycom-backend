@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get "/user/:id", to: "users#show"
      end
 
-     namespace :v2 do
+     namespace :v1 do
       resources :motorcycles, only: %i[index]
       get "/motorcycle", to: "motorcycles#show"
       post "/motorcycle", to: "motorcycles#create"
