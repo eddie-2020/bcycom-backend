@@ -1,7 +1,7 @@
 class Api::V2::MotorcyclesController < ApplicationController
   before_action :authorized, only: %i[index show]
 
-  # MOTOCYCLES
+  # MOTORCYCLES
   def index
     @motorcycles = Motorcycle.all
     if @motorcycles
@@ -9,5 +9,11 @@ class Api::V2::MotorcyclesController < ApplicationController
     else
       render json: { error: 'No motorcycles yet!' }, status: :not_found
     end
+  end
+
+  # MOTORCYCLE
+  def show
+    @motorcycle = Motorcycle.find(params[:id])
+    render json: @motorcycle
   end
 end
