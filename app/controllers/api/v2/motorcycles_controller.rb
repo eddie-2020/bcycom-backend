@@ -17,6 +17,16 @@ class Api::V2::MotorcyclesController < ApplicationController
     render json: @motorcycle
   end
 
+  # CREATE MOTORCYCLE
+  def create
+    @motorcycle = Motorcycle.create(motorcycle_params.merge(user: @user))
+    if @motorcycle.save
+      render json: { motorcycle: @motorcycle, message: 'Motorcycle created successfully!' }, status: :created
+    else
+      render json: { error: @motorcycle.error.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def motorcycle_params
