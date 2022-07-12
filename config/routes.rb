@@ -7,5 +7,9 @@ Rails.application.routes.draw do
       get "/users", to: "users#index"
       get "/user/:id", to: "users#show"
      end
+
+     namespace :v2 do
+      resources :motorcycles, only: %i[index show create update delete]
+     end
   end
 end
