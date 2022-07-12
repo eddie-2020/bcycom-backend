@@ -37,6 +37,20 @@ class Api::V2::MotorcyclesController < ApplicationController
     end
   end
 
+  # DELETE MOTORCYCLE
+  def destroy
+    if @motorcycle == @user.motorcycles.find_by(id: params[:id])
+      if @motorcycle.reserve == false
+        @motorcycle.destroy
+        render json: { message: 'Motorcycle deleted successfully!' }, status: :ok
+      else
+        render json: { message: 'This motorcycle is on reserve my another user!' }, status: :unprocessable_entity
+      end
+    else
+      render json: { message: 'Only the owner is permitted to delete this motorcycle' }, status: :not_found
+    end
+  end
+
   private
 
   def set_motorcycle
