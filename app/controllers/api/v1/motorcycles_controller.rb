@@ -1,4 +1,4 @@
-class Api::V2::MotorcyclesController < ApplicationController
+class Api::V1::MotorcyclesController < ApplicationController
   before_action :authorized, only: %i[create update destroy]
   before_action :set_motorcycle, only: %i[update]
 

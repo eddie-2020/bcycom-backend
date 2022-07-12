@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_210738) do
     t.string "model"
     t.string "description"
     t.float "price"
-    t.string "images", default: [], array: true
+    t.string "image", default: [], array: true
     t.string "text", default: [], array: true
     t.integer "duration"
     t.integer "discount"
