@@ -33,7 +33,10 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-    if @motorcycle.update(motorcycle_params)
+     cycle=params.require(:motorcycle)
+    .permit(:cylinder,:description,:model,:acceleration,:title,:price,:duration,:discount,images:[] )
+    .merge(user:@user)
+    if @motorcycle.update(cycle)
       render json: { motorcycle: @motorcycle, message: 'Motorcycle updated successfully' }, status: :ok
     else
       render json: { error: @motorcycle.errors.full_messages }, status: :unprocessable_entity
