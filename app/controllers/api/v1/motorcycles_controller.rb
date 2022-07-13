@@ -58,6 +58,6 @@ class Api::V2::MotorcyclesController < ApplicationController
   end
 
   def motorcycle_params
-    params.permit(:model, :title, :description, :price, :duration, :discount, :image)
+    params.permit(:model, :title, :description, :price, :duration, :discount, { images: [] })
   end
 end

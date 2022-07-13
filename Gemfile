@@ -27,6 +27,10 @@ gem 'tzinfo-data'
 
 gem 'bootsnap', require: false
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
 group :development, :test do
   gem 'capybara'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
