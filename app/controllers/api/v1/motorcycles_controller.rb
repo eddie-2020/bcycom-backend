@@ -20,9 +20,9 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # CREATE MOTORCYCLE
   def create
-    cycle=params.require(:motorcycle)
-    .permit(:cylinder,:description,:model,:acceleration,:title,:price,:duration,:discount,images:[] )
-    .merge(user:@user)
+    cycle = params.require(:motorcycle)
+      .permit(:cylinder, :description, :model, :acceleration, :title, :price, :duration, :discount, images: [])
+      .merge(user: @user)
     @motorcycle = Motorcycle.create(cycle)
     if @motorcycle.save
       render json: { motorcycle: @motorcycle, message: 'Motorcycle created successfully!' }, status: :created
@@ -33,9 +33,9 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-     cycle=params.require(:motorcycle)
-    .permit(:cylinder,:description,:model,:acceleration,:title,:price,:duration,:discount,images:[] )
-    .merge(user:@user)
+    cycle = params.require(:motorcycle)
+      .permit(:cylinder, :description, :model, :acceleration, :title, :price, :duration, :discount, images: [])
+      .merge(user: @user)
     if @motorcycle.update(cycle)
       render json: { motorcycle: @motorcycle, message: 'Motorcycle updated successfully' }, status: :ok
     else
