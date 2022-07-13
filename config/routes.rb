@@ -6,9 +6,6 @@ Rails.application.routes.draw do
       get "/auto_login", to: "users#auto_login"
       get "/users", to: "users#index"
       get "/user/:id", to: "users#show"
-     end
-
-     namespace :v1 do
       resources :motorcycles, only: %i[index]
       get "/motorcycle", to: "motorcycles#show"
       post "/motorcycle", to: "motorcycles#create"
