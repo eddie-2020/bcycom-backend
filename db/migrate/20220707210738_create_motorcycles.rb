@@ -4,6 +4,8 @@ class CreateMotorcycles < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :model
       t.string :description
+      t.integer :cylinder 
+      t.string :acceleration
       t.float :price
       t.integer :duration
       t.integer :discount
