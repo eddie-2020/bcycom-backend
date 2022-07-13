@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_07_210738) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_13_094746) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,14 +18,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_210738) do
     t.string "title"
     t.string "model"
     t.string "description"
+    t.integer "cylinder"
+    t.string "acceleration"
     t.float "price"
-    t.string "image", default: [], array: true
-    t.string "text", default: [], array: true
     t.integer "duration"
-    t.integer "discount"
+    t.integer "discount", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "images"
     t.index ["user_id"], name: "index_motorcycles_on_user_id"
   end
 
