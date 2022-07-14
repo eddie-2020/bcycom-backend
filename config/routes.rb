@@ -7,9 +7,9 @@ Rails.application.routes.draw do
       get "/users", to: "users#index"
       get "/user/:id", to: "users#show"
       resources :motorcycles, only: %i[index]
-      get "/motorcycle", to: "motorcycles#show"
+      get "/motorcycle/:id", to: "motorcycles#show"
       post "/motorcycle", to: "motorcycles#create"
-      put "/motorcycle", to: "motorcycles#update"
+      put "/motorcycle/:id", to: "motorcycles#update"
       delete "/motorcycle/:id => false", to: "motorcycles#destroy"
      end
   end

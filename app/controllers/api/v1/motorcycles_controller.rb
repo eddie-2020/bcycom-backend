@@ -15,7 +15,9 @@ class Api::V1::MotorcyclesController < ApplicationController
   # MOTORCYCLE
   def show
     @motorcycle = Motorcycle.find(params[:id])
-    render json: @motorcycle
+    user = User.find(@motorcycle[:user_id])
+    cycle= {motrcycle:@motorcycle,created_by:user} 
+    render json: cycle
   end
 
   # CREATE MOTORCYCLE
@@ -33,14 +35,7 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-    cycle = params.require(:motorcycle)
-      .permit(:cylinder, :description, :model, :acceleration, :title, :price, :duration, :discount, images: [])
-      .merge(user: @user)
-    if @motorcycle.update(cycle)
-      render json: { motorcycle: @motorcycle, message: 'Motorcycle updated successfully' }, status: :ok
-    else
-      render json: { error: @motorcycle.errors.full_messages }, status: :unprocessable_entity
-    end
+    cycle= Motorcycle.find(params[:id])
   end
 
   # DELETE MOTORCYCLE
