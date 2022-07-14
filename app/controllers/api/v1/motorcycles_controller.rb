@@ -16,7 +16,7 @@ class Api::V1::MotorcyclesController < ApplicationController
   def show
     @motorcycle = Motorcycle.find(params[:id])
     user = User.find(@motorcycle[:user_id])
-    cycle= {motrcycle:@motorcycle,created_by:user} 
+    cycle = { motrcycle: @motorcycle, created_by: user }
     render json: cycle
   end
 
@@ -35,7 +35,7 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-    cycle= Motorcycle.find(params[:id])
+    # do your work
   end
 
   # DELETE MOTORCYCLE
