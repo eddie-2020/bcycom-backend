@@ -21,6 +21,15 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
   
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    if @reservation.destroy
+        render json: { reservation: @reservation, message: 'Reservation successfully deleted' }
+    else
+        render json: { errors: @reservation.errors.full_messages, message: 'Reservation not deleted' }
+    end
+  end
+
   private
 
   def reservation_params
