@@ -11,6 +11,16 @@ class Api::V1::ReservationsController < ApplicationController
     render json: { reservation: @reservation }
   end
 
+  def create
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user_id = params[:user_id]
+    if @reservation.save
+      render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created, location: @reservation
+    else
+      render json: { errors: @reservation.errors.full_messages, message: 'Reservation not created!' }, status: :unprocessable_entity
+    end
+  end
+  
   private
 
   def reservation_params
