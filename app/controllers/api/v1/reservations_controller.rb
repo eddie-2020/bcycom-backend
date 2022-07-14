@@ -15,18 +15,20 @@ class Api::V1::ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.user_id = params[:user_id]
     if @reservation.save
-      render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created, location: @reservation
+      render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created,
+             location: @reservation
     else
-      render json: { errors: @reservation.errors.full_messages, message: 'Reservation not created!' }, status: :unprocessable_entity
+      render json: { errors: @reservation.errors.full_messages, message: 'Reservation not created!' },
+             status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     @reservation = Reservation.find(params[:id])
     if @reservation.destroy
-        render json: { reservation: @reservation, message: 'Reservation successfully deleted' }
+      render json: { reservation: @reservation, message: 'Reservation successfully deleted' }
     else
-        render json: { errors: @reservation.errors.full_messages, message: 'Reservation not deleted' }
+      render json: { errors: @reservation.errors.full_messages, message: 'Reservation not deleted' }
     end
   end
 
