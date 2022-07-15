@@ -20,7 +20,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   def create
     reserve = params.require(:reservation)
-      .permit(:phone, :motorcycle_id)
+      .permit(:phone, :user_id, :motorcycle_id)
       .merge(user: @user)
     @reservation = Reservation.create(reserve)
     if @reservation.save
@@ -31,10 +31,11 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def update
-    if @reservation = @user.reservation.find_by(id: params[:id])
+    update_reservation = @user.motorcycle.find_by(id: params[:id])
+    if update_reservation
       @reservation = Reservation.find(params[:id])
       update_reservation = params.require(:reservation)
-        .permit(:phone, :motorcycle_id)
+        .permit(:phone, :user_id, :motorcycle_id)
         .merge(user: @user)
       if @reservation.update(update_reservation)
         render json: { reservation: @reservation, message: 'Reservation updated successfully!' }
@@ -42,15 +43,29 @@ class Api::V1::ReservationsController < ApplicationController
         render json: { errors: @reservation.errors.full_messages, message: 'Reservation not updated!' }
       end
     else
-      render json: { message: 'Only the owner of this reservation is permitted to delete it!' }
+      render json: { message: 'Only the owner of this reservation is permitted to update it!' }
     end
   end
 
-  def destroy; end
+  def destroy
+    delete_reservation = @user.motorcycle.find_by(id: params[:id])
+    if delete_reservation
+      @reservation = Reservation.find(params[:id])
+      if @reservation.destroy
+        render json: { reservation: @reservation, message: 'Reservation deleted successfully!' }, status: :ok
+      else
+        render json: { errors: @reservation.errors.full_messages,
+                       message: 'Reservation not deleted!' },
+               status: :unauthorized_user
+      end
+    else
+      render json: { message: 'Only the owner is permitted to delete this reservation!' }
+    end
+  end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:phone, :motorcycle_id)
+    params.require(:reservation).permit(:phone, :user_id, :motorcycle_id)
   end
 end
