@@ -30,7 +30,21 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    if @reservation = @user.reservation.find_by(id: params[:id])
+      @reservation = Reservation.find(params[:id])
+      update_reservation = params.require(:reservation)
+        .permit(:phone, :motorcycle_id)
+        .merge(user: @user)
+      if @reservation.update(update_reservation)
+        render json: { reservation: @reservation, message: 'Reservation updated successfully!' }
+      else
+        render json: { errors: @reservation.errors.full_messages, message: 'Reservation not updated!' }
+      end
+    else
+      render json: { message: 'Only the owner of this reservation is permitted to delete it!' }
+    end
+  end
 
   def destroy; end
 
