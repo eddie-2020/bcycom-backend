@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_14_070722) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "reservation_time"
+    t.string "phone"
     t.bigint "user_id", null: false
     t.bigint "motorcycle_id", null: false
     t.datetime "created_at", null: false

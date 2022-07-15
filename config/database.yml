@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: bcycom_development
-  username: postgres
+  username: bcycom
   password: admin
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,8 +58,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: bcycom_test
-  username: postgres
+  database: bcycom_development
+  username: bcycom
   password: admin
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: bcycom_production
-  username: postgres
+  username: bcycom
   password: admin
