@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get "/motorcycle/:id", to: "motorcycles#show"
       post "/motorcycle", to: "motorcycles#create"
       put "/motorcycle/:id", to: "motorcycles#update"
-      delete "/motorcycle/:id => false", to: "motorcycles#destroy"
+      delete "/motorcycle/:id", to: "motorcycles#destroy"
      end
   end
 end

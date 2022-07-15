@@ -35,30 +35,44 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-    # do your work
+    if @motorcycle = @user.motorcycle.find_by(id: params[:id])
+      @motorcycle = Motorcycle.find(params[:id])
+      update_cycle = params.require(:motorcycle)
+        .permit(:cylinder, :description, :model, :acceleration, :title, :price, :duration, :discount, images: [])
+        .merge(user: @user)
+      if @motorcycle.update(update_cycle)
+        render json: { motorcycle: @motorcycle, message: 'Motorcycle updated successfully!' }
+      else
+        render json: { errors: @motorcycle.errors.full_messages, message: 'Motorcycle not updated!' }
+      end
+    else
+      render json: { message: 'Only the owner is permitted to update this motorcycle!' }
+    end
   end
 
   # DELETE MOTORCYCLE
   def destroy
-    if @motorcycle == @user.motorcycles.find_by(id: params[:id])
-      if @motorcycle.reserve == false
-        @motorcycle.destroy
-        render json: { message: 'Motorcycle deleted successfully!' }, status: :ok
+    if @motorcycle = @user.motorcycle.find_by(id: params[:id])
+      @motorcycle = Motorcycle.find(params[:id])
+      if @motorcycle.destroy
+        render json: { motorcycles: @motorcycles, message: 'Motorcycle deleted successfully!' }, status: :ok
       else
-        render json: { message: 'This motorcycle is on reserve my another user!' }, status: :unprocessable_entity
+        render json: { errors: @motorcycle.errors.full_messages,
+                       message: 'Motorcycle not deleted!' },
+               status: :unauthorized_user
       end
     else
-      render json: { message: 'Only the owner is permitted to delete this motorcycle' }, status: :not_found
+      render json: { message: 'Only the owner is permitted to delete this motorcycle!' }
     end
   end
 
   private
 
   def set_motorcycle
-    @motorcycle = @user.motorcycles.find(params[:id])
+    @motorcycle = Motorcycle.find(params[:id])
   end
 
-  def motorcycle_params
-    params.permit(:model, :title, :description, :price, :duration, :discount, { images: [] })
-  end
+  # def set_permission
+
+  # end
 end
