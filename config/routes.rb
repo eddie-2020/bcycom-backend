@@ -14,9 +14,11 @@ Rails.application.routes.draw do
       delete "/motorcycle/:id => false", to: "motorcycles#destroy"
 
       resources :reservations, only: %i[index]
-      get "/motorcycle/reservation/:id", to: "reservations#show"
-      post "/motorcycle/reservation", to: "reservations#create"
-      delete "/motorcycle/reservation/:id => false", to: "reservations#destroy"
+      get "/reservation/:id", to: "reservations#show"
+      get "/getreservation/:id", to: "reservations#show"
+      post "/reservation", to: "reservations#create"
+      put "/reservation/:id", to: "reservations#update"
+      delete "/motorcycle/reservation/:id", to: "reservations#destroy"
      end
   end
 end
