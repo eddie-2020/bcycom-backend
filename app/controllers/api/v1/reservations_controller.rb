@@ -1,40 +1,42 @@
 class Api::V1::ReservationsController < ApplicationController
-  before_action :authorized, only: %i[index create destroy]
+  before_action :authorized, only: %i[create update destroy]
 
   def index
-    @user_reservations = Reservation.where(user_id: params[:user_id])
-    render json: { user_reservations: @user_reservations }
+    @reservation = Reservation.all
+    if @reservation
+      render json: @reservation
+    else
+      render json: { error: 'No reservation yet!' }, status: :not_found
+    end
   end
 
   def show
     @reservation = Reservation.find(params[:id])
-    render json: { reservation: @reservation }
+    user = User.find(@reservation[:user_id])
+    motorcycle = Motorcycle.find(@reservation[:motorcycle_id])
+    reserve = { reservation: @reservation, motorcycle:, created_by: user }
+    render json: reserve
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user_id = params[:user_id]
+    reserve = params.require(:reservation)
+      .permit(:phone, :motorcycle_id)
+      .merge(user: @user)
+    @reservation = Reservation.create(reserve)
     if @reservation.save
-      render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created,
-             location: @reservation
+      render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created
     else
-      render json: { errors: @reservation.errors.full_messages, message: 'Reservation not created!' },
-             status: :unprocessable_entity
+      render json: { error: @reservation.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
-  def destroy
-    @reservation = Reservation.find(params[:id])
-    if @reservation.destroy
-      render json: { reservation: @reservation, message: 'Reservation successfully deleted' }
-    else
-      render json: { errors: @reservation.errors.full_messages, message: 'Reservation not deleted' }
-    end
-  end
+  def update; end
+
+  def destroy; end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:reservation_time, :motorcycle_id)
+    params.require(:reservation).permit(:phone, :motorcycle_id)
   end
 end

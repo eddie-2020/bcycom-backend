@@ -71,8 +71,4 @@ class Api::V1::MotorcyclesController < ApplicationController
   def set_motorcycle
     @motorcycle = Motorcycle.find(params[:id])
   end
-
-  # def set_permission
-
-  # end
 end
