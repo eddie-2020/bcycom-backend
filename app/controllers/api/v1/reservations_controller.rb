@@ -75,6 +75,6 @@ class Api::V1::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:phone, :user_id, :motorcycle_id)
+    params.require(:reservation).permit(:phone,:motorcycle_id)
   end
 end
