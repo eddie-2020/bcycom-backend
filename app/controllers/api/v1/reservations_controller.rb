@@ -11,7 +11,6 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def show
-    puts
     @reservation = Reservation.find(params[:id])
     user = User.find(@reservation[:user_id])
     motorcycle = Motorcycle.find(@reservation[:motorcycle_id])
@@ -19,7 +18,6 @@ class Api::V1::ReservationsController < ApplicationController
     render json: reserve
   end
   def getReservation
-    puts reservation_params
     @reservation= Reservation.where(reservation_params)
     render json: @reservation  
   end
@@ -36,12 +34,9 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def update
-    update_reservation = @user.motorcycle.find_by(id: params[:id])
-    if update_reservation
-      @reservation = Reservation.find(params[:id])
-      update_reservation = params.require(:reservation)
-        .permit(:phone, :user_id, :motorcycle_id)
-        .merge(user: @user)
+    @reservation = Reservation.find(params[:id])
+    if (@user[:id]== @reservation[:user_id] )
+      update_reservation = reservation_params.merge(user: @user)
       if @reservation.update(update_reservation)
         render json: { reservation: @reservation, message: 'Reservation updated successfully!' }
       else
