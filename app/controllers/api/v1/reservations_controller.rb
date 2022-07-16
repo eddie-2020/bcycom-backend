@@ -41,6 +41,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
+    if(Motorcycle.find(params[:motorcycle_id]))
     if @user[:id] == @reservation[:user_id]
       update_reservation = reservation_params.merge(user: @user)
       if @reservation.update(update_reservation)
@@ -50,6 +51,9 @@ class Api::V1::ReservationsController < ApplicationController
       end
     else
       render json: { message: 'Only the owner of this reservation is permitted to update it!' }
+    end
+      else
+      render json: { error: 'No motorcyle registerd with this id' }, status: :not_found
     end
   end
 
