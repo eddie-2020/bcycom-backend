@@ -24,26 +24,23 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def create
-    reserve= params.require(:reservation)
+    reserve = params.require(:reservation)
       .permit(:phone, :motorcycle_id)
       .merge(user: @user)
-    reservation=Reservation.find_by(motorcycle_id: params[:motorcycle_id],user_id: @user.id)
-    if(reservation)
-     render json: { reservation: reservation,
-       message: 'Reservation Exist before with the same motorcyle_id and user' 
-      }, 
-       status: :created
-    else
-     if Motorcycle.find(params[:motorcycle_id])
+    reservation = Reservation.find_by(motorcycle_id: params[:motorcycle_id], user_id: @user.id)
+    if reservation
+      render json: { reservation:,
+                     message: 'Reservation Exist before with the same motorcyle_id and user' },
+             status: :created
+    elsif Motorcycle.find(params[:motorcycle_id])
       @reservation = Reservation.create(reserve)
       if @reservation.save
         render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created
       else
         render json: { error: @reservation.errors.full_messages }, status: :unprocessable_entity
       end
-     else
+    else
       render json: { error: 'No motorcyle registerd with this id' }, status: :not_found
-     end
     end
   end
 
