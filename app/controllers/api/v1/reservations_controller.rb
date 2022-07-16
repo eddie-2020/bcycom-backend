@@ -27,11 +27,15 @@ class Api::V1::ReservationsController < ApplicationController
     reserve = params.require(:reservation)
       .permit(:phone, :motorcycle_id)
       .merge(user: @user)
+    if(Motorcycle.find(params[:motorcycle_id]))
     @reservation = Reservation.create(reserve)
     if @reservation.save
       render json: { reservation: @reservation, message: 'Reservation created successfully!' }, status: :created
     else
       render json: { error: @reservation.errors.full_messages }, status: :unprocessable_entity
+    end
+    else
+      render json: { error: 'No motorcyle registerd with this id' }, status: :not_found
     end
   end
 
