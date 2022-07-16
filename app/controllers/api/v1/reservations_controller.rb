@@ -20,7 +20,7 @@ class Api::V1::ReservationsController < ApplicationController
   end
   def getReservation
     puts reservation_params
-    @reservation= Reservation.find_by(reservation_params)
+    @reservation= Reservation.where(reservation_params)
     if @reservation
       render json: @reservation
     else
