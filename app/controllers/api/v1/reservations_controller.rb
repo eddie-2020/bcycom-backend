@@ -17,7 +17,14 @@ class Api::V1::ReservationsController < ApplicationController
     reserve = { reservation: @reservation, motorcycle:, created_by: user }
     render json: reserve
   end
-
+  def getReservation
+    @reservation= Reservation.find_by(reservation_params)
+    if @reservation
+      render json: @reservation
+    else
+      render json: { error: 'No reservation yet!' }, status: :not_found
+    end
+  end
   def create
     reserve = params.require(:reservation)
       .permit(:phone, :user_id, :motorcycle_id)
