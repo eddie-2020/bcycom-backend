@@ -18,7 +18,7 @@ class Api::V1::MotorcyclesController < ApplicationController
     user = User.find(@motorcycle[:user_id])
     reservation= Reservation.where({id:@motorcycle[:id]})
     puts reservation
-    cycle = { motrcycle: @motorcycle, created_by: user,reservation: reservations.length}
+    cycle = { motrcycle: @motorcycle, created_by: user,reservations: reservation.length}
     render json: cycle
   end
 

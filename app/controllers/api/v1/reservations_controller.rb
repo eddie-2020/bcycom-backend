@@ -21,11 +21,7 @@ class Api::V1::ReservationsController < ApplicationController
   def getReservation
     puts reservation_params
     @reservation= Reservation.where(reservation_params)
-    if @reservation
-      render json: @reservation
-    else
-      render json: { error: 'No reservation yet!' }, status: :not_found
-    end
+    render json: @reservation  
   end
   def create
     reserve = params.require(:reservation)
