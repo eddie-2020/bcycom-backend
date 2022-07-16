@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
       resources :reservations, only: %i[index]
       get "/reservation/:id", to: "reservations#show"
-      post "/getreservation", to: "reservations#getßßßreservation"
+      post "/getreservation", to: "reservations#getreservation"
       post "/reservation", to: "reservations#create"
       put "/reservation/:id", to: "reservations#update" 
       delete "/reservation/:id", to: "reservations#destroy"
