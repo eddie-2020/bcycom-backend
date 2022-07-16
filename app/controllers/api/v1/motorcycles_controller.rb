@@ -16,7 +16,9 @@ class Api::V1::MotorcyclesController < ApplicationController
   def show
     @motorcycle = Motorcycle.find(params[:id])
     user = User.find(@motorcycle[:user_id])
-    cycle = { motrcycle: @motorcycle, created_by: user }
+    reservation = Reservation.where({ id: @motorcycle[:id] })
+    puts reservation
+    cycle = { motrcycle: @motorcycle, created_by: user, reservations: reservation.length }
     render json: cycle
   end
 
@@ -35,8 +37,8 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-    if @motorcycle = @user.motorcycle.find_by(id: params[:id])
-      @motorcycle = Motorcycle.find(params[:id])
+    @motorcycle = Motorcycle.find(params[:id])
+    if @motorcycle[:user_id] == @user[:id]
       update_cycle = params.require(:motorcycle)
         .permit(:cylinder, :description, :model, :acceleration, :title, :price, :duration, :discount, images: [])
         .merge(user: @user)
@@ -52,8 +54,8 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # DELETE MOTORCYCLE
   def destroy
-    if @motorcycle = @user.motorcycle.find_by(id: params[:id])
-      @motorcycle = Motorcycle.find(params[:id])
+    @motorcycle = Motorcycle.find(params[:id])
+    if @motorcycle[:user_id] == @user[:id]
       if @motorcycle.destroy
         render json: { motorcycles: @motorcycles, message: 'Motorcycle deleted successfully!' }, status: :ok
       else
@@ -71,8 +73,4 @@ class Api::V1::MotorcyclesController < ApplicationController
   def set_motorcycle
     @motorcycle = Motorcycle.find(params[:id])
   end
-
-  # def set_permission
-
-  # end
 end
