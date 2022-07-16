@@ -48,8 +48,8 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def destroy
-    delete_reservation = @user.motorcycle.find_by(id: params[:id])
-    if delete_reservation
+    @reservation = Reservation.find(params[:id])
+    if (@user[:id]== @reservation[:user_id] )
       @reservation = Reservation.find(params[:id])
       if @reservation.destroy
         render json: { reservation: @reservation, message: 'Reservation deleted successfully!' }, status: :ok
