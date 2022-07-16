@@ -17,10 +17,12 @@ class Api::V1::ReservationsController < ApplicationController
     reserve = { reservation: @reservation, motorcycle:, created_by: user }
     render json: reserve
   end
-  def getReservation
-    @reservation= Reservation.where(reservation_params)
-    render json: @reservation  
+
+  def getreservation
+    @reservation = Reservation.where(reservation_params)
+    render json: @reservation
   end
+
   def create
     reserve = params.require(:reservation)
       .permit(:phone, :motorcycle_id)
@@ -35,7 +37,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
-    if (@user[:id]== @reservation[:user_id] )
+    if @user[:id] == @reservation[:user_id]
       update_reservation = reservation_params.merge(user: @user)
       if @reservation.update(update_reservation)
         render json: { reservation: @reservation, message: 'Reservation updated successfully!' }
@@ -49,8 +51,7 @@ class Api::V1::ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find(params[:id])
-    if (@user[:id]== @reservation[:user_id] )
-      @reservation = Reservation.find(params[:id])
+    if @user[:id] == @reservation[:user_id]
       if @reservation.destroy
         render json: { reservation: @reservation, message: 'Reservation deleted successfully!' }, status: :ok
       else
@@ -66,6 +67,6 @@ class Api::V1::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:phone,:motorcycle_id)
+    params.require(:reservation).permit(:phone, :motorcycle_id)
   end
 end

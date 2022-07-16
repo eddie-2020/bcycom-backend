@@ -16,9 +16,9 @@ class Api::V1::MotorcyclesController < ApplicationController
   def show
     @motorcycle = Motorcycle.find(params[:id])
     user = User.find(@motorcycle[:user_id])
-    reservation= Reservation.where({id:@motorcycle[:id]})
+    reservation = Reservation.where({ id: @motorcycle[:id] })
     puts reservation
-    cycle = { motrcycle: @motorcycle, created_by: user,reservations: reservation.length}
+    cycle = { motrcycle: @motorcycle, created_by: user, reservations: reservation.length }
     render json: cycle
   end
 
@@ -37,8 +37,8 @@ class Api::V1::MotorcyclesController < ApplicationController
 
   # UPDATE MOTORCYCLE
   def update
-      @motorcycle = Motorcycle.find(params[:id])
-    if(@motorcycle[:user_id] == @user[:id])
+    @motorcycle = Motorcycle.find(params[:id])
+    if @motorcycle[:user_id] == @user[:id]
       update_cycle = params.require(:motorcycle)
         .permit(:cylinder, :description, :model, :acceleration, :title, :price, :duration, :discount, images: [])
         .merge(user: @user)
@@ -55,7 +55,7 @@ class Api::V1::MotorcyclesController < ApplicationController
   # DELETE MOTORCYCLE
   def destroy
     @motorcycle = Motorcycle.find(params[:id])
-    if(@motorcycle[:user_id] == @user[:id])
+    if @motorcycle[:user_id] == @user[:id]
       if @motorcycle.destroy
         render json: { motorcycles: @motorcycles, message: 'Motorcycle deleted successfully!' }, status: :ok
       else

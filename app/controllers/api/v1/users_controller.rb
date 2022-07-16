@@ -8,9 +8,9 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @motorcycle= Motorcycle.where({id:@user[:id]})
-    @reservation= Reservation.where({user_id: @user[:id]})
-    user={user:@user,motorcycle_created: @motorcycle.length,reservation_created: @reservation.length }
+    @motorcycle = Motorcycle.where({ id: @user[:id] })
+    @reservation = Reservation.where({ user_id: @user[:id] })
+    user = { user: @user, motorcycle_created: @motorcycle.length, reservation_created: @reservation.length }
     render json: user
   end
 
