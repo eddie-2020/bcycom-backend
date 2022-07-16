@@ -11,6 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def show
+    puts
     @reservation = Reservation.find(params[:id])
     user = User.find(@reservation[:user_id])
     motorcycle = Motorcycle.find(@reservation[:motorcycle_id])
@@ -18,6 +19,7 @@ class Api::V1::ReservationsController < ApplicationController
     render json: reserve
   end
   def getReservation
+    puts reservation_params
     @reservation= Reservation.find_by(reservation_params)
     if @reservation
       render json: @reservation
@@ -27,7 +29,7 @@ class Api::V1::ReservationsController < ApplicationController
   end
   def create
     reserve = params.require(:reservation)
-      .permit(:phone, :user_id, :motorcycle_id)
+      .permit(:phone, :motorcycle_id)
       .merge(user: @user)
     @reservation = Reservation.create(reserve)
     if @reservation.save
