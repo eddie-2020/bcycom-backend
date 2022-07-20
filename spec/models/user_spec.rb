@@ -20,18 +20,23 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it 'should have valid password' do
-      @user.password = 'root123'
+    it 'should have valid photo attributes' do
+      @user.photo = '12345.png'
       expect(@user).to be_valid
     end
 
-    it 'should throw an error if password is too long (maximum of 20 characters)' do
-      @user.password = 'password password password password password password'
+    it 'should throw an error if photo attribute is not given' do
+      @user.photo = ''
       expect(@user).to_not be_valid
     end
 
-    it 'should throw an error if password is too short (minimum of 4 characters)' do
-      @user.password = 'key'
+    it 'should have valid email attributes' do
+      @user.email = 'you@gmail.com'
+      expect(@user).to be_valid
+    end
+
+    it 'should throw an error if email attribute is not given' do
+      @user.email = ''
       expect(@user).to_not be_valid
     end
   end

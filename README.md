@@ -1,24 +1,69 @@
-# README
+# Bcycom Back End
+> This is the backend for the [Bcycom]() web application and below is what you can following to set up this web application...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Deployment
 
-Things you may want to cover:
+[Base url]()
 
-* Ruby version
+## Built With
 
-* System dependencies
+- Rails
+- Ruby 
+- Postgresql
+- JWT
+- Heroku
 
-* Configuration
+## Getting Started
 
-* Database creation
+Here are the steps to follow in order to get this project on your local computer.
 
-* Database initialization
+### Prerequisites
 
-* How to run the test suite
+`rails, '~> 7.0.3' +`
 
-* Services (job queues, cache servers, search engines, etc.)
+`ruby '3.1.2' +`
 
-* Deployment instructions
+### Setup
 
-* ...
+clone this repo by typing `git clone git@github.com:oluyaratosin123/Final-Capstone-Back-End.git`
+
+### Install
+
+install the dependencies by typing `bundle install`
+
+### Usage
+
+start the local server by running `rails s`
+
+
+## Author
+
+👤 **Dagic Zewdu**
+
+- GitHub: [@Dagic-zewdu](https://github.com/Dagic-zewdu)
+- Twitter: [@dagic4](https://twitter.com/dagic4)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/dagi-zewdu-21b835215/)
+
+👤 **Edward Oluyara**
+
+- GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)
+- Twitter: [@TOluyara](https://twitter.com/TOluyara)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/edward-oluyara/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+ N/A
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
