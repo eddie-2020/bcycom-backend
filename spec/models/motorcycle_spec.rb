@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Motorcycle, type: :model do
   before(:each) do
     @user = FactoryBot.create(:user)
@@ -92,3 +93,4 @@ RSpec.describe Motorcycle, type: :model do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

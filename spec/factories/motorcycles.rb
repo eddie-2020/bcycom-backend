@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :motorcycle do
-    title { "MyString" }
-    model { "MyString" }
-    description { "MyString" }
+    title { 'MyString' }
+    model { 'MyString' }
+    description { 'MyString' }
     cylinder { 1 }
-    acceleration { "MyString" }
-    images { "MyString" }
+    acceleration { 'MyString' }
+    images { 'MyString' }
     price { 1 }
     duration { 1 }
     discount { 1 }
