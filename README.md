@@ -1,24 +1,73 @@
-# README
+# Bcycom Back End
+> This is the backend for the [Bcycom](http://sleepy-forest-22507.herokuapp.com/) web application and below is what you can following to set up this web application...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Deployment
 
-Things you may want to cover:
+[Base url](http://sleepy-forest-22507.herokuapp.com/)
 
-* Ruby version
+## Bcycom Front End
 
-* System dependencies
+[Front End Repo](https://github.com/Dagic-zewdu/final-capstone-frontend)
 
-* Configuration
+## Built With
 
-* Database creation
+- Rails
+- Ruby 
+- Postgresql
+- JWT
+- Heroku
 
-* Database initialization
+## Getting Started
 
-* How to run the test suite
+Here are the steps to follow in order to get this project on your local computer.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Prerequisites
 
-* Deployment instructions
+`rails, '~> 7.0.3' +`
 
-* ...
+`ruby '3.1.2' +`
+
+### Setup
+
+clone this repo by typing `git clone git@github.com:oluyaratosin123/Final-Capstone-Back-End.git`
+
+### Install
+
+install the dependencies by typing `bundle install`
+
+### Usage
+
+start the local server by running `rails s`
+
+
+## Author
+
+👤 **Dagic Zewdu**
+
+- GitHub: [@Dagic-zewdu](https://github.com/Dagic-zewdu)
+- Twitter: [@dagic4](https://twitter.com/dagic4)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/dagic-zewdu/)
+
+👤 **Edward Oluyara**
+
+- GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)
+- Twitter: [@TOluyara](https://twitter.com/TOluyara)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/edward-oluyara/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+ N/A
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.

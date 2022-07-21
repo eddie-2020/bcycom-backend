@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Motorcycle, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @motorcycle = Motorcycle.create(:motorcycle)
+  end
+
+  context 'Motorcycle model, ' do
+    it 'should have valid attributes' do
+      expect(@motorcycle).to be_valid
+    end
+  end
 end
