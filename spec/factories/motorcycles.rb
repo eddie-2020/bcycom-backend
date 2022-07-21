@@ -1,14 +1,15 @@
 FactoryBot.define do
   factory :motorcycle do
-    title { 'MyString' }
-    model { 'MyString' }
-    description { 'MyString' }
-    price { 1.5 }
-    cylinder { 2 }
-    acceleration { 'MyString' }
-    images { 'MyString' }
+    title { "MyString" }
+    model { "MyString" }
+    description { "MyString" }
+    cylinder { 1 }
+    acceleration { "MyString" }
+    images { "MyString" }
+    price { 1 }
     duration { 1 }
     discount { 1 }
-    user { nil }
+
+    association :user, factory: :user
   end
 end

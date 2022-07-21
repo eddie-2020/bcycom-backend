@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :reservation do
-    user { nil }
-    motorcycle { nil }
+    user { 1 }
+    motorcycle { 1 }
   end
 end
