@@ -52,7 +52,7 @@ Here are the steps to follow in order to get this project on your local computer
 
 - Motorcycle Details
     - **GET**: http://localhost:3000/api/v1/motorcycle/:id
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle/1
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle/1
 
 - View All Reservations
     - **GET**: http://localhost:3000/api/v1/reservations
