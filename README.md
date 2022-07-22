@@ -42,10 +42,14 @@ Here are the steps to follow in order to get this project on your local computer
     - **GET**: http://localhost:3000/api/v1/users
     - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/users
 
-- Create Motorcycle Page
+- Create Motorcycle Page this needs authorized token in the header. So you get token from the `/login` api
     - **POST**: http://localhost:3000/api/v1/motorcycle
     - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle
-
+    - **PUT** http:http://localhost:3000/api/v1/motorcycle/:id. This updates motorcyle with the given id. Be sure that you are the creator of this item. Which will be checked through the token you provide on the header.
+    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle/:id
+    - **Delete** http:http://localhost:3000/api/v1/motorcycle/:id. This deletes motorcyle with the given id. Be sure that you are the creator of this item. Which will be checked through the token you provide on the header.
+    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle/:id
+    
 - View All Motorcycles
     - **GET**: http://localhost:3000/api/v1/motorcycles
     - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycles
