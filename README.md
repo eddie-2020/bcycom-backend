@@ -36,11 +36,11 @@ Here are the steps to follow in order to get this project on your local computer
 ### API Documentation
 - Login Page
     - **POST**: http://localhost:3000/api/v1/login
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/login
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/login
 
 - View All Users
     - **GET**: http://localhost:3000/api/v1/users
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/users
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/users
 
 - Create Motorcycle Page this needs authorized token in the header. So you get token from the `/login` api
     - **POST**: http://localhost:3000/api/v1/motorcycle
@@ -52,23 +52,32 @@ Here are the steps to follow in order to get this project on your local computer
     
 - View All Motorcycles
     - **GET**: http://localhost:3000/api/v1/motorcycles
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycles
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycles
 
 - Motorcycle Details
     - **GET**: http://localhost:3000/api/v1/motorcycle/:id
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle/1
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/motorcycle/1
 
 - View All Reservations
     - **GET**: http://localhost:3000/api/v1/reservations
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservations
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservations
 
 - Create reservation
     - **POST**: http://localhost:3000/api/v1/reservation
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation
+        
+    - **PUT**: http://localhost:3000/api/v1/reservation/:id
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/:id
+        
+    - **DELETE**: http://localhost:3000/api/v1/reservation/:id
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/:id
+       
+    - **UPDATE**: http://localhost:3000/api/v1/reservation/:id
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/:id
 
 - Reservation Datails Page
     - **GET**: http://localhost:3000/api/v1/reservation/:id
-    - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/1
+        - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/1
     
 ### Setup
 
