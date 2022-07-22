@@ -21,6 +21,12 @@
 
 Here are the steps to follow in order to get this project on your local computer.
 
+### Kanban Board Final View
+- Back End
+    - ![](./app/screenshots/Capturefg.PNG)
+
+- Front End
+    - ![](./app/screenshots/Captureui.PNG)
 ### Prerequisites
 
 `rails, '~> 7.0.3' +`
