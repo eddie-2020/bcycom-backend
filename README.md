@@ -61,10 +61,13 @@ Here are the steps to follow in order to get this project on your local computer
 - Create reservation
     - **POST**: http://localhost:3000/api/v1/reservation
         - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation
+        
     - **PUT**: http://localhost:3000/api/v1/reservation/:id
         - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/:id
+        
     - **DELETE**: http://localhost:3000/api/v1/reservation/:id
         - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/:id
+       
     - **UPDATE**: http://localhost:3000/api/v1/reservation/:id
         - **BASE URL**: http://sleepy-forest-22507.herokuapp.com/api/v1/reservation/:id
 
